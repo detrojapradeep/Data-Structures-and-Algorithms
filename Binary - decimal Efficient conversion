@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+string bin;
+
+void fun(ll n){
+
+//convert the no to binary using bit manipulation
+	string bin = "";
+    for(int i=31; i>=0; i--){
+        int temp;
+        temp = n>>i;
+        if(temp & 1){
+            bin += '1';
+        }
+        else bin += '0';
+    }
+
+//Conversion back to decimal
+	reverse(bin.begin(), bin.end());    // reversed can be ignored, i did this due to the need of question
+    ll base = 1;                      // V.IMP 
+    ll dec=0;                         // V.IMP
+    for(int i=bin.length()-1; i>=0; i--){
+        if(bin[i] == '1'){
+        	dec = dec + base;
+		} 
+		base = base *2;
+    }
+    cout<<dec<<endl;
+}
+int main() {
+    int t;
+    cin>>t;
+    while(t--){
+        ll n;
+        cin>>n;      
+        fun(n);
+    }
+	return 0;
+}
